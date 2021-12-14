@@ -56,7 +56,7 @@ if page == 'Make a Prediction':
             waveform = waveform[:input_len]
             zero_padding = tf.zeros([16000] - tf.shape(waveform),
                 dtype=tf.float32)
-            st.write(tf.shape(waveform), zero_padding)
+            st.write(tf.shape(waveform)[0], zero_padding)
             waveform = tf.cast(waveform, dtype=tf.float32)            
             equal_length = tf.concat([waveform, zero_padding], 0)
             spectrogram = tf.signal.stft(equal_length, frame_length=255, frame_step=128)
