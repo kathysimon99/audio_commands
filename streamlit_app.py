@@ -54,6 +54,7 @@ if page == 'Make a Prediction':
         with st.spinner("Classifying the audio command..."):
             input_len = 16000
             waveform = waveform[:input_len]
+            print(tf.shape(waveform))
             zero_padding = tf.zeros([16000] - tf.shape(waveform),
                 dtype=tf.float32)
             
