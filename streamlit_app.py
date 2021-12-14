@@ -16,6 +16,7 @@ from tensorflow.keras.models import load_model
 import os
 import librosa
 import glob
+import pydub
 from helper import get_spectrogram, read_audio, record, get_dataframe
 
 st.title('Audio Commands')
@@ -32,7 +33,7 @@ if page == 'Make a Prediction':
     model = load_model('best_cnn.h5')
 
     def upload_and_save_wavfiles(save_dir: str) -> List[Path]:
-    """ limited 200MB, you could increase by `streamlit run foo.py --server.maxUploadSize=1024` """
+        """ limited 200MB, you could increase by `streamlit run foo.py --server.maxUploadSize=1024` """
         uploaded_files = st.file_uploader("upload", type=['wav', 'mp3'] accept_multiple_files=True)
         save_paths = []
         for uploaded_file in uploaded_files:
