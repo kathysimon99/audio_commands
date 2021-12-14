@@ -13,7 +13,7 @@ from tensorflow.keras.models import load_model
 import os
 import librosa
 import glob
-from helper import create_spectrogram, read_audio, record, save_record, preprocess, get_dataframe,  scaler_transform
+from helper import get_spectrogram, read_audio, record, save_record, get_dataframe,  scaler_transform
 
 st.title('Audio Commands')
 

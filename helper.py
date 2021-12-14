@@ -7,7 +7,7 @@ import sounddevice as sd
 import wavio
 import numpy as np
 import tensorflow as tf
-#from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 
 features = ['chroma_stft', 'rmse', 'spectral_centroid', 'spectral_bandwidth',
@@ -46,7 +46,7 @@ def get_dataframe(feature_row):
 
 def scaler_transform(feature):
     df = pd.read_csv(r"C:\Users\DELL\COV_Project\Files\smote_no_encode.csv")
-    #scaler = MinMaxScaler()
+    scaler = MinMaxScaler()
     X = scaler.fit_transform(np.array(df.iloc[:, :-1]))
     X_s = pd.DataFrame(X, columns = features)
     X_s['label'] = df['label']
