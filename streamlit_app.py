@@ -34,7 +34,10 @@ if page == 'Make a Prediction':
     model = load_model('best_cnn.h5')
 
     new_file = st.file_uploader('Update .wav file here', type = 'wav')
-    sampling_rate, new_audio =  wav.read(new_file)
+    st.write(new_file.name)
+
+    
+    #sampling_rate, new_audio =  wav.read(new_file)
 
     #new_audio, _ = tf.audio.decode_wav(new_file)
     #if st.button("Record"):
