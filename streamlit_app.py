@@ -34,7 +34,7 @@ if page == 'Make a Prediction':
     model = load_model('best_cnn.h5')
 
     uploaded_file = st.file_uploader('Update .wav file here', type = 'wav')
-    filename = './samples/uploaded_file' + uploaded_file.name
+    filename = './samples/uploaded_file/' + uploaded_file.name
     st.write('Filename: ', filename)
 
     
