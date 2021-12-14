@@ -1,4 +1,4 @@
-[reference)(https://github.com/HimanshuKGP007/covid-detection)
+[reference](https://github.com/HimanshuKGP007/covid-detection)
 
 import os
 from datetime import datetime
@@ -25,7 +25,7 @@ if page == 'About':
 if page == 'Make a Prediction':
     st.write('What audio command are you saying?')
     
-    model = load_model('./saved_mode/cnn_model2')
+    model = load_model('./saved_mode/cnn_model_2')
 
     if st.button(f"Click to Record"):
         record_state = st.text("Recording...")
