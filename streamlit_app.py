@@ -55,7 +55,7 @@ if page == 'Make a Prediction':
             spectrogram = tf.signal.stft(waveform, frame_length=256, frame_step=128)
             st.write(spectrogram)
             #spectrogram = get_spectrogram(waveform)
-            spectrogram_df = get_dataframe(spectrogram)
+            #spectrogram_df = get_dataframe(spectrogram)
             st.write(spectrogram)
             prediction = model.predict(spectrogram)
         st.success("Classification completed")
