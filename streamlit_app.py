@@ -8,8 +8,8 @@ import numpy as np
 import streamlit.components.v1 as components
 import streamlit as st
 from pathlib import Path
-#import tensorflow as tf
-#from tensorflow.keras.models import load_model
+import tensorflow as tf
+from tensorflow.keras.models import load_model
 #from tensorflow.keras import layers
 #from tensorflow.keras import models
 #import soundfile as sf
@@ -29,7 +29,7 @@ if page == 'About':
 if page == 'Make a Prediction':
     st.write('What audio command are you saying?')
     
-#    model = load_model('best_cnn.h5')
+    model = load_model('best_cnn.h5')
 
     audio = st.file_uploader('Update .wav file here', type = '.wav')
 
