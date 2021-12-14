@@ -31,8 +31,8 @@ if page == 'Make a Prediction':
     
     model = load_model('best_cnn.h5')
 
-    audio = st.file_uploader('Update .wav file here', type = '.wav')
-
+    new_file = st.file_uploader('Update .wav file here', type = '.wav')
+    new_audio = tf.audio.decode_wave(new_file)
     #if st.button("Record"):
     #   record_state = st.text("Recording...")
     #    duration = 1  # seconds
@@ -41,7 +41,7 @@ if page == 'Make a Prediction':
 
     if st.button('Classify'):
         with st.spinner("Classifying the audio command..."):
-            spectrogram = get_spectrogram(audio)
+            spectrogram = get_spectrogram(new_audio)
             spectrogram_df = get_dataframe(spectrogram)
             
             prediction = model.predict(spectrogram_df)
