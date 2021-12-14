@@ -8,6 +8,7 @@ import numpy as np
 import streamlit.components.v1 as components
 import streamlit as st
 from pathlib import Path
+from tensorflow.keras.models import load_model
 #import soundfile as sf
 import os
 import librosa
@@ -25,7 +26,7 @@ if page == 'About':
 if page == 'Make a Prediction':
     st.write('What audio command are you saying?')
     
-    model = tf.keras.models.load_model('./saved_mode/cnn_model_2')
+    model = load_model('./saved_mode/cnn_model_2')
 
     if st.button(f"Click to Record"):
         record_state = st.text("Recording...")
