@@ -52,7 +52,7 @@ if page == 'Make a Prediction':
 
     if st.button('Classify'):
         with st.spinner("Classifying the audio command..."):
-            spectrogram = tf.signal.stft(waveform, frame_length=255, frame_step=128)
+            spectrogram = tf.signal.stft(waveform, frame_length=256, frame_step=128)
             st.write(spectrogram)
             #spectrogram = get_spectrogram(waveform)
             spectrogram_df = get_dataframe(spectrogram)
