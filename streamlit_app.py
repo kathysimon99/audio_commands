@@ -47,4 +47,4 @@ if page == 'Make a Prediction':
     #        prediction = model.predict(spectrogram_df)
     #    st.success("Classification completed")
     #    st.header("Test Results:")
-    3    st.write({prediction})
+    #    st.write({prediction})
