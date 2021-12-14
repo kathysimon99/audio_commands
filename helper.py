@@ -1,7 +1,7 @@
 #[reference](https://github.com/HimanshuKGP007/covid-detection)
 
 import matplotlib.pyplot as plt
-import librosa
+#import librosa
 from pathlib import Path
 import sounddevice as sd
 import wavio
