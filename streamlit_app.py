@@ -31,18 +31,20 @@ if page == 'Make a Prediction':
     
     model = load_model('best_cnn.h5')
 
-    if st.button("Click to Record"):
-        record_state = st.text("Recording...")
-        duration = 1  # seconds
-        fs = 22050
-        myrecording = record(duration, fs)
+    audio = st.file_uploader('Update .wav file here', type = '.wav')
 
-    if st.button(f'Classify'):
-        with st.spinner("Classifying the audio command..."):
-            spectrogram = get_spectrogram(myrecording)
-            spectrogram_df = get_dataframe(spectrogram)
+    #if st.button("Record"):
+    #   record_state = st.text("Recording...")
+    #    duration = 1  # seconds
+    #   fs = 22050
+    #    myrecording = record(duration, fs)
+
+    #if st.button('Classify'):
+    #    with st.spinner("Classifying the audio command..."):
+    #        spectrogram = get_spectrogram(myrecording)
+    #        spectrogram_df = get_dataframe(spectrogram)
             
-            prediction = model.predict(spectrogram_df)
-        st.success("Classification completed")
-        st.header("Test Results:")
-        st.write({prediction})
+    #        prediction = model.predict(spectrogram_df)
+    #    st.success("Classification completed")
+    #    st.header("Test Results:")
+    3    st.write({prediction})
