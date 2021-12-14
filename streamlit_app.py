@@ -29,7 +29,7 @@ if page == 'Make a Prediction':
     
     model = load_model('best_cnn.h5')
 
-    if st.button(f"Click to Record"):
+    if st.button("Click to Record"):
         record_state = st.text("Recording...")
         duration = 1  # seconds
         fs = 22050
