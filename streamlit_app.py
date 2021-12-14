@@ -38,9 +38,9 @@ if page == 'Make a Prediction':
     st.write('Filename: ', filename)
 
     
-    sampling_rate, new_audio =  wav.read(filename)
+    #sampling_rate, new_audio =  wav.read(filename)
 
-    #new_audio, _ = tf.audio.decode_wav(filename)
+    new_audio, _ = tf.audio.decode_wav(filename)
     #if st.button("Record"):
     #   record_state = st.text("Recording...")
     #    duration = 1  # seconds
