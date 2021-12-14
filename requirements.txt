@@ -1,0 +1,11 @@
+interpret
+numpy
+pandas==1.2.4
+matplotlib==3.3.4
+librosa==0.8.0
+streamlit==0.81.1
+sounddevice
+wavio
+xgboost
+scikit-learn==0.23.2
+scipy==1.5.2
