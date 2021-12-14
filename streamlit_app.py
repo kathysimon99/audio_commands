@@ -57,7 +57,7 @@ if page == 'Make a Prediction':
             #spectrogram = get_spectrogram(waveform)
             #spectrogram_df = get_dataframe(spectrogram)
             st.write(spectrogram)
-            prediction = model.predict(spectrogram)
+            prediction = np.argmax(model.predict(spectrogram), axis=1)
         st.success("Classification completed")
         st.header("Test Results:")
         st.write({prediction})
