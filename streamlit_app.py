@@ -35,13 +35,11 @@ if page == 'Make a Prediction':
         myrecording = record(duration, fs)
 
     if st.button(f'Classify'):
-        path_myrecording = f"./samples/{filename}.wav"
-        with st.spinner("Classifying the audio command"):
-            retro = preprocess(path_myrecording)
-            retro1 = get_dataframe(retro)
-            retro2 = scaler_transform(retro1)
-
-            prediction = model.predict(retro2)
+        with st.spinner("Classifying the audio command..."):
+            spectrogram = get_spectrogram(myrecording)
+            spectrogram_df = get_dataframe(spectrogtram)
+            
+            prediction = model.predict(spectrogram_df)
         st.success("Classification completed")
         st.header("Test Results:")
         st.write({prediction})

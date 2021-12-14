@@ -1,7 +1,7 @@
 #[reference](https://github.com/HimanshuKGP007/covid-detection)
 
 import matplotlib.pyplot as plt
-#import librosa
+import librosa
 from pathlib import Path
 import sounddevice as sd
 import wavio
@@ -15,28 +15,28 @@ features = ['chroma_stft', 'rmse', 'spectral_centroid', 'spectral_bandwidth',
        'mfcc12', 'mfcc13', 'mfcc14', 'mfcc15', 'mfcc16', 'mfcc17', 'mfcc18',
        'mfcc19', 'mfcc20']
 
-def preprocess(fn_wav):
-    y, sr = librosa.load(fn_wav, mono=True, duration=5)
-    chroma_stft = librosa.feature.chroma_stft(y=y, sr=sr)
-    rmse = librosa.feature.rms(y=y)
-    spectral_centroid = librosa.feature.spectral_centroid(y=y, sr=sr)
-    spectral_bandwidth = librosa.feature.spectral_bandwidth(y=y, sr=sr)
-    rolloff = librosa.feature.spectral_rolloff(y=y, sr=sr)
-    zcr = librosa.feature.zero_crossing_rate(y)
-    mfcc = librosa.feature.mfcc(y=y, sr=sr)
-    
-    feature_row = {        
-        'chroma_stft': np.mean(chroma_stft),
-        'rmse': np.mean(rmse),
-        'spectral_centroid': np.mean(spectral_centroid),
-        'spectral_bandwidth': np.mean(spectral_bandwidth),
-        'rolloff': np.mean(rolloff),
-        'zero_crossing_rate': np.mean(zcr),        
-    }
-    for i, c in enumerate(mfcc):
-        feature_row[f'mfcc{i+1}'] = np.mean(c)
-    
-    return feature_row
+def get_spectrogram(waveform):
+  # Zero-padding for an audio waveform with less than 16,000 samples.
+  input_len = 16000
+  waveform = waveform[:input_len]
+  zero_padding = tf.zeros(
+      [16000] - tf.shape(waveform),
+      dtype=tf.float32)
+  # Cast the waveform tensors' dtype to float32.
+  waveform = tf.cast(waveform, dtype=tf.float32)
+  # Concatenate the waveform with `zero_padding`, which ensures all audio
+  # clips are of the same length.
+  equal_length = tf.concat([waveform, zero_padding], 0)
+  # Convert the waveform to a spectrogram via a STFT.
+  spectrogram = tf.signal.stft(
+      equal_length, frame_length=255, frame_step=128)
+  # Obtain the magnitude of the STFT.
+  spectrogram = tf.abs(spectrogram)
+  # Add a `channels` dimension, so that the spectrogram can be used
+  # as image-like input data with convolution layers (which expect
+  # shape (`batch_size`, `height`, `width`, `channels`).
+  spectrogram = spectrogram[..., tf.newaxis]
+  return spectrogram
 
 def get_dataframe(feature_row):
     data = pd.DataFrame.from_dict(feature_row, orient='index')
