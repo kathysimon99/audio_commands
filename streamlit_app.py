@@ -54,7 +54,7 @@ if page == 'Make a Prediction':
         with st.spinner("Classifying the audio command..."):
             input_len = 16000
             waveform = waveform[:input_len]
-            zero_padding = tf.zeros([16000] - tf.shape(waveform),
+            zero_padding = tf.zeros([16000] - tf.shape(waveform)[0],
                 dtype=tf.float32)
             st.write(tf.shape(waveform)[0], zero_padding)
             waveform = tf.cast(waveform, dtype=tf.float32)            
