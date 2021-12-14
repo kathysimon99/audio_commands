@@ -41,8 +41,8 @@ if page == 'Make a Prediction':
  
     raw_audio = tf.io.read_file(filename)
     waveform, _ = tf.audio.decode_wav(raw_audio)
-    assert isinstance(waveform, tf.data.Dataset)
     st.write(waveform)
+    
     #if st.button("Record"):
     #   record_state = st.text("Recording...")
     #    duration = 1  # seconds
