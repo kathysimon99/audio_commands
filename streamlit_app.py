@@ -37,7 +37,7 @@ if page == 'Make a Prediction':
     if st.button(f'Classify'):
         with st.spinner("Classifying the audio command..."):
             spectrogram = get_spectrogram(myrecording)
-            spectrogram_df = get_dataframe(spectrogtram)
+            spectrogram_df = get_dataframe(spectrogram)
             
             prediction = model.predict(spectrogram_df)
         st.success("Classification completed")
