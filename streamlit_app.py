@@ -38,9 +38,9 @@ if page == 'Make a Prediction':
     st.write('Filename: ', filename)
 
     
-    #sampling_rate, new_audio =  wav.read(filename)
-
-    new_audio, _ = tf.audio.decode_wav(filename)
+ 
+    raw_audio = tf.io.read_file(filename)
+    waveform, _ = tf.audio.decode_wav(raw_audio)
     #if st.button("Record"):
     #   record_state = st.text("Recording...")
     #    duration = 1  # seconds
@@ -49,7 +49,7 @@ if page == 'Make a Prediction':
 
     if st.button('Classify'):
         with st.spinner("Classifying the audio command..."):
-            spectrogram = get_spectrogram(new_audio)
+            spectrogram = get_spectrogram(waveform)
             spectrogram_df = get_dataframe(spectrogram)
             
             prediction = model.predict(spectrogram_df)
