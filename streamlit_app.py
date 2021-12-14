@@ -2,7 +2,7 @@
 
 import os
 from datetime import datetime
-#import librosa.display
+import librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
 import streamlit.components.v1 as components
@@ -25,7 +25,7 @@ if page == 'About':
 if page == 'Make a Prediction':
     st.write('What audio command are you saying?')
     
-    model = load_model('./saved_mode/cnn_model_2')
+    model = tf.keras.models.load_model('./saved_mode/cnn_model_2')
 
     if st.button(f"Click to Record"):
         record_state = st.text("Recording...")
