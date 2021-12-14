@@ -44,14 +44,7 @@ def get_dataframe(feature_row):
     data2 = data.T
     return data2
 
-def scaler_transform(feature):
-    df = pd.read_csv(r"C:\Users\DELL\COV_Project\Files\smote_no_encode.csv")
-    scaler = MinMaxScaler()
-    X = scaler.fit_transform(np.array(df.iloc[:, :-1]))
-    X_s = pd.DataFrame(X, columns = features)
-    X_s['label'] = df['label']
-    test_normalised = scaler.transform(feature)
-    return test_normalised
+
 
 
 def create_spectrogram(voice_sample):
@@ -94,6 +87,3 @@ def record(duration=5, fs=22050):
     sd.wait(duration)
     return myrecording
 
-def save_record(path_myrecording, myrecording, fs):
-    wavio.write(path_myrecording, myrecording, fs, sampwidth=2)
-    return None
