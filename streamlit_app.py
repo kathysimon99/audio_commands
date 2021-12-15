@@ -32,7 +32,7 @@ if page == 'About':
 if page == 'Make a Prediction':
     st.write('What audio command are you saying?')
     
-    model = load_model('best_cnn.h5')
+    model = load_model('best_cnn.h5', compile = True)
 
     uploaded_file = st.file_uploader('Update .wav file here', type = 'wav')
     filename = './samples/' + uploaded_file.name
@@ -65,10 +65,8 @@ if page == 'Make a Prediction':
             st.write(spectrogram)
             test_audio = np.array(spectrogram)
 
-            data = pd.DataFrame.from_dict(test_audio, orient='index')
-            data2 = data.T
 
-            prediction = np.argmax(model.predict(data2), axis=1)
+            prediction = np.argmax(model.predict(test_audio), axis=1)
         st.success("Classification completed")
         st.header("Test Results:")
         st.write({prediction})
