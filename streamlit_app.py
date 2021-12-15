@@ -64,8 +64,10 @@ if page == 'Make a Prediction':
             st.write(spectrogram)
             test_audio = np.array(spectrogram)
 
+            data = pd.DataFrame.from_dict(test_audio, orient='index')
+            data2 = data.T
 
-            prediction = np.argmax(model.predict(test_audio), axis=1)
+            prediction = np.argmax(model.predict(data2), axis=1)
         st.success("Classification completed")
         st.header("Test Results:")
         st.write({prediction})
