@@ -62,13 +62,10 @@ if page == 'Make a Prediction':
             spectrogram = tf.abs(spectrogram)
             spectrogram = spectrogram[..., tf.newaxis]
             st.write(spectrogram)
-            #spectrogram = get_spectrogram(waveform)
-            #spectrogram_df = get_dataframe(spectrogram)
             test_audio = np.array(spectrogram)
 
 
-            prediction = model(test_audio)
-            prediction = tf.nn.softmax(prediction)
+            prediction = np.argmax(model.predict(test_audio), axis=1)
         st.success("Classification completed")
         st.header("Test Results:")
         st.write({prediction})
