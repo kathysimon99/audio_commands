@@ -56,7 +56,7 @@ if page == 'Make a Prediction':
             waveform = waveform[:input_len]
             st.write(waveform)
             st.write([16000])
-            zero_padding = tf.zeros([16000,0],
+            zero_padding = tf.zeros([16000,1],
                 dtype=tf.float32)
             st.write(tf.shape(waveform)[0], zero_padding)
             waveform = tf.cast(waveform, dtype=tf.float32)            
