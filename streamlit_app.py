@@ -58,7 +58,7 @@ if page == 'Make a Prediction':
             st.write(tf.shape(waveform)[0], zero_padding)
             waveform = tf.cast(waveform, dtype=tf.float32)            
             equal_length = tf.concat([waveform, zero_padding], 0)
-            spectrogram = tf.signal.stft(equal_length, frame_length=255, frame_step=128)
+            spectrogram = tf.signal.stft(equal_length, frame_length=256, frame_step=128)
             spectrogram = tf.abs(spectrogram)
             spectrogram = spectrogram[..., tf.newaxis]
             st.write(spectrogram)
