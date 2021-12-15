@@ -67,7 +67,8 @@ if page == 'Make a Prediction':
             test_audio = np.array(spectrogram)
 
 
-            prediction = np.argmax(model.predict(test_audio), axis=1)
+            prediction = model(test_audio)
+            prediction = tf.nn.softmax(prediction)
         st.success("Classification completed")
         st.header("Test Results:")
         st.write({prediction})
