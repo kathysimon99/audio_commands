@@ -12,7 +12,6 @@ ___
 | CNN Modeling Part 2 | Improve on CNN model, evaluate metrics and create predictions | [modeling_cnn_part_2.ipynb](./modeling_cnn_part_2.ipynb) |
 | Best CNN Model | Saved Best CNN Model | [best_cnn.h5]('/.best_cnn.h5')
 | Presentation Slides | Slides presented during presentation on 12/16/2021| [slides_speech_commands.pdf]('./slides_speech_commands.pdf')|
-| Data | Folder Containing Data Files| [data folder](./data/) |
 | Visuals | Folder Containing Visuals| [visuals folder](./visuals/)|
 | Streamlit App | Scripts for Streamlit App - WORK IN PROGRESS|[streamlit_app.py]('./streamlit_app.py)|
 | | | [helper.py]('./helper.py') |
